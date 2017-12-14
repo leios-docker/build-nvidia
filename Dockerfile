@@ -32,5 +32,8 @@ ENV WORK_TOP_PATH /work
 
 ENV PATH $PATH:/opt/toolchain/gcc-linaro-5.3-2016.02-x86_64_arm-linux-gnueabihf/bin:/opt/toolchain/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu/bin
 
+ENV ARCH=arm64
+ENV CROSS_COMPILE=aarch64-linux-gnu-
+
 WORKDIR /work
 
