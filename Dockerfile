@@ -1,11 +1,7 @@
 FROM ubuntu:16.04
 
-RUN locale-gen ko_KR.UTF-8
 
-ENV LANG ko_KR.UTF-8
-ENV LC_ALL ko_KR.UTF-8
-
-RUN sed -ri 's/\/archive\.ubuntu\.com/\/kr\.archive\.ubuntu\.com/g' /etc/apt/sources.list
+#RUN sed -ri 's/\/archive\.ubuntu\.com/\/kr\.archive\.ubuntu\.com/g' /etc/apt/sources.list
 
 RUN \
     apt-get update && \
@@ -13,9 +9,13 @@ RUN \
         curl sudo \
         git-core build-essential \
         libz3-dev libncurses5-dev \
-        unzip bc wget vim \
+        unzip bc wget vim locales \
         && \
     rm -rf /var/lib/apt/lists/*
+
+RUN locale-gen ko_KR.UTF-8
+ENV LANG ko_KR.UTF-8
+ENV LC_ALL ko_KR.UTF-8
 
 ADD http://releases.linaro.org/components/toolchain/binaries/5.3-2016.02/aarch64-linux-gnu/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu.tar.xz /opt/toolchain/
 
